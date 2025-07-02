@@ -1,6 +1,7 @@
 package array_and_slices
 
 import (
+	"fmt"
 	"slices"
 	"testing"
 )
@@ -81,4 +82,22 @@ func BenchmarkSumAll(b *testing.B) {
 			numbers3,
 			numbers4)
 	}
+}
+
+func ExampleSum() {
+	sum := Sum([]int{1, 2, 3})
+	fmt.Println(sum)
+	// output: 6
+}
+
+func ExampleSumAll() {
+	sums := SumAll([]int{1, 2, 3}, []int{2, 3})
+	fmt.Println(sums)
+	// output: [6 5]
+}
+
+func ExampleSumAllTails() {
+	sumsTail := SumAllTails([]int{1, 2, 3}, []int{2, 3})
+	fmt.Println(sumsTail)
+	// output: [5 3]
 }
