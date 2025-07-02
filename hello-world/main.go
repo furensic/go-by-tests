@@ -9,13 +9,15 @@ func ReturnHello() string {
 const greeterString = "Hello, "
 const greeterStringSpanish = "Hola, "
 
+const spanish = "Spanish"
+
 func Greet(name, language string) string {
 	if name == "" {
 		name = "World"
 	}
 
 	switch language {
-	case "Spanish":
+	case spanish:
 		return fmt.Sprintf("%s%s!", greeterStringSpanish, name)
 	default:
 		return fmt.Sprintf("%s%s!", greeterString, name)
