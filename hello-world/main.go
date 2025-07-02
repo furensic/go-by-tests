@@ -6,8 +6,14 @@ func ReturnHello() string {
 	return "Hello, World!"
 }
 
+const greeterString = "Hello, "
+
 func Greet(name string) string {
-	return fmt.Sprintf("Hello, %s!", name)
+	if name == "" || len(name) == 0 {
+		return "Hello, World!"
+	}
+
+	return fmt.Sprintf("%s%s!", greeterString, name)
 }
 
 func main() {
