@@ -1,1 +1,1 @@
-package hello_world
+package main
