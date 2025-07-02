@@ -22,7 +22,7 @@ func TestWallet(t *testing.T) {
 
 	t.Run("withdraw bitcoin", func(t *testing.T) {
 		wallet := Wallet{balance: Bitcoin(25)}
-		wallet.Withdraw(Bitcoin(5))
+		_ = wallet.Withdraw(Bitcoin(5))
 
 		assertBalance(t, wallet, Bitcoin(20))
 	})
