@@ -30,6 +30,6 @@ func TestIteration(t *testing.T) {
 
 func BenchmarkRepeat(b *testing.B) {
 	for b.Loop() {
-		Repeat("a", 15)
+		Repeat("a", 50)
 	}
 }
