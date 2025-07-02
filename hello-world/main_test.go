@@ -35,6 +35,13 @@ func TestGreeting(t *testing.T) {
 		want := fmt.Sprintf("Hola, %s!", name)
 		assertCorrectMessage(t, got, want)
 	})
+
+	t.Run("Say greeting in french", func(t *testing.T) {
+		name := "French"
+		got := Greet(name, "French")
+		want := fmt.Sprintf("Bonjour, %s!", name)
+		assertCorrectMessage(t, got, want)
+	})
 }
 
 func assertCorrectMessage(t testing.TB, got, want string) {

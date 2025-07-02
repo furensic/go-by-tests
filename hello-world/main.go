@@ -6,22 +6,29 @@ func ReturnHello() string {
 	return "Hello, World!"
 }
 
-const greeterString = "Hello, "
+const greeterStringEnglish = "Hello, "
 const greeterStringSpanish = "Hola, "
-
+const greeterStringFrench = "Bonjour, "
 const spanish = "Spanish"
+const french = "French"
 
 func Greet(name, language string) string {
 	if name == "" {
 		name = "World"
 	}
 
+	prefix := greeterStringEnglish
+
 	switch language {
 	case spanish:
-		return fmt.Sprintf("%s%s!", greeterStringSpanish, name)
+		prefix = greeterStringSpanish
+	case french:
+		prefix = greeterStringFrench
 	default:
-		return fmt.Sprintf("%s%s!", greeterString, name)
+		prefix = greeterStringEnglish
 	}
+
+	return fmt.Sprintf("%s%s!", prefix, name)
 }
 
 func main() {
