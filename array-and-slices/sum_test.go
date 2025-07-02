@@ -44,3 +44,18 @@ func BenchmarkSum(b *testing.B) {
 		Sum(numbers)
 	}
 }
+
+func BenchmarkSumAll(b *testing.B) {
+	numbers1 := []int{1, 5, 3, 21, 67, 54, 43, 2, 324, 4365, 34576, 54}
+	numbers2 := []int{1, 23, 4, 4236, 5437, 2, 3, 32, 41, 26, 32, 674, 75664, 3}
+	numbers3 := []int{233, 234, 1, 23, 25, 346, 2}
+	numbers4 := []int{234, 23, 6, 64, 68, 5, 34, 6, 23, 34}
+
+	for b.Loop() {
+		SumAll(
+			numbers1,
+			numbers2,
+			numbers3,
+			numbers4)
+	}
+}
