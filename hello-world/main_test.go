@@ -15,7 +15,7 @@ func TestHello(t *testing.T) {
 func TestGreeting(t *testing.T) {
 	t.Run("saying hello to people", func(t *testing.T) {
 		name := "Bill"
-		got := Greet(name)
+		got := Greet(name, "")
 		want := fmt.Sprintf("Hello, %s!", name)
 
 		assertCorrectMessage(t, got, want)
@@ -23,9 +23,16 @@ func TestGreeting(t *testing.T) {
 
 	t.Run("say 'Hello, World!' when an empty string is supplied", func(t *testing.T) {
 		name := ""
-		got := Greet(name)
+		got := Greet(name, "")
 		want := "Hello, World!"
 
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("Say greeting in spanish", func(t *testing.T) {
+		name := "Diego"
+		got := Greet(name, "Spanish")
+		want := fmt.Sprintf("Hola, %s!", name)
 		assertCorrectMessage(t, got, want)
 	})
 }

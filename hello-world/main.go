@@ -7,13 +7,19 @@ func ReturnHello() string {
 }
 
 const greeterString = "Hello, "
+const greeterStringSpanish = "Hola, "
 
-func Greet(name string) string {
-	if name == "" || len(name) == 0 {
-		return "Hello, World!"
+func Greet(name, language string) string {
+	if name == "" {
+		name = "World"
 	}
 
-	return fmt.Sprintf("%s%s!", greeterString, name)
+	switch language {
+	case "Spanish":
+		return fmt.Sprintf("%s%s!", greeterStringSpanish, name)
+	default:
+		return fmt.Sprintf("%s%s!", greeterString, name)
+	}
 }
 
 func main() {
