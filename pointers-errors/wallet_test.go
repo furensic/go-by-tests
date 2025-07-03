@@ -27,6 +27,13 @@ func TestWallet(t *testing.T) {
 		}
 	}
 
+	assertErrorNil := func(t testing.TB, got error) {
+		t.Helper()
+		if got != nil {
+			t.Errorf("got %q want nil", got)
+		}
+	}
+
 	withdrawTests := []struct {
 		name    string
 		balance Bitcoin
@@ -48,8 +55,9 @@ func TestWallet(t *testing.T) {
 	for _, testCase := range withdrawTests {
 		t.Run(testCase.name, func(t *testing.T) {
 			wallet := Wallet{testCase.balance}
-			_ = wallet.Withdraw(testCase.amount)
+			err := wallet.Withdraw(testCase.amount)
 
+			assertErrorNil(t, err)
 			assertBalance(t, wallet, testCase.want)
 		})
 	}
