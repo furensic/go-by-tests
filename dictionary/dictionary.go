@@ -4,10 +4,16 @@ import (
 	"errors"
 )
 
-var (
-	ErrNotFound      = errors.New("could not find the word")
-	ErrAlreadyExists = errors.New("already exists")
+const (
+	ErrNotFound      = DictionaryErr("could not find the word")
+	ErrAlreadyExists = DictionaryErr("already exists")
 )
+
+type DictionaryErr string
+
+func (e DictionaryErr) Error() string {
+	return string(e)
+}
 
 type Dictionary map[string]string
 
