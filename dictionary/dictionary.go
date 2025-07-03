@@ -56,10 +56,10 @@ func (d Dictionary) Update(word, definition string) error {
 
 func (d Dictionary) Delete(word string) error {
 	_, err := d.Search(word)
-	switch err {
-	case ErrNotFound:
+	switch {
+	case errors.Is(err, ErrNotFound):
 		return ErrDoesNotExist
-	case nil:
+	case err == nil:
 		delete(d, word)
 	}
 
