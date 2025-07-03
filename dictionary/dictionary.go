@@ -7,6 +7,7 @@ import (
 const (
 	ErrNotFound      = DictionaryErr("could not find the word")
 	ErrAlreadyExists = DictionaryErr("already exists")
+	ErrDoesNotExist  = DictionaryErr("does not exist")
 )
 
 type DictionaryErr string
@@ -45,7 +46,7 @@ func (d Dictionary) Update(word, definition string) error {
 	_, err := d.Search(word)
 	switch err {
 	case ErrNotFound:
-		return ErrNotFound
+		return ErrDoesNotExist
 	case nil:
 		d[word] = definition
 	}
