@@ -3,12 +3,24 @@ package pointers_errors
 import "testing"
 
 func TestWallet(t *testing.T) {
-	assertBalance := func(t *testing.T, wallet Wallet, want Bitcoin) {
+	assertBalance := func(t testing.TB, wallet Wallet, want Bitcoin) {
 		t.Helper()
 		got := wallet.Balance()
 
 		if got != want {
 			t.Errorf("got %s want %s", got, want)
+		}
+	}
+
+	assertError := func(t testing.TB, got error, want string) {
+		t.Helper()
+
+		if got == nil {
+			t.Fatal("got nil, want error")
+		}
+
+		if got.Error() != want {
+			t.Errorf("got %q, want %q", got, want)
 		}
 	}
 
@@ -34,8 +46,6 @@ func TestWallet(t *testing.T) {
 
 		assertBalance(t, wallet, startingBalance)
 
-		if err == nil {
-			t.Errorf("got nil want error")
-		}
+		assertError(t, err, "cannot withdraw, insufficient funds")
 	})
 }
