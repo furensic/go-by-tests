@@ -10,6 +10,7 @@ const (
 	ErrDoesNotExist  = DictionaryErr("does not exist")
 )
 
+//goland:noinspection GoNameStartsWithPackageName
 type DictionaryErr string
 
 func (e DictionaryErr) Error() string {
@@ -44,10 +45,10 @@ func (d Dictionary) Add(word, definition string) error {
 
 func (d Dictionary) Update(word, definition string) error {
 	_, err := d.Search(word)
-	switch err {
-	case ErrNotFound:
+	switch {
+	case errors.Is(err, ErrNotFound):
 		return ErrDoesNotExist
-	case nil:
+	case err == nil:
 		d[word] = definition
 	default:
 		return err

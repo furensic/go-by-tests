@@ -5,12 +5,14 @@ import (
 	"testing"
 )
 
+//goland:noinspection ALL
 func TestRepeat(t *testing.T) {
 	t.Run("iterate a 5 times", func(t *testing.T) {
 		inputChar := "a"
 		repeatCount := 5
 
 		repeated := Repeat(inputChar, repeatCount)
+		//goland:noinspection SpellCheckingInspection
 		expected := "aaaaa"
 
 		if repeated != expected {
@@ -23,6 +25,7 @@ func TestRepeat(t *testing.T) {
 		repeatCount := 7
 
 		repeated := Repeat(inputChar, repeatCount)
+		//goland:noinspection SpellCheckingInspection
 		expected := "ccccccc"
 
 		if repeated != expected {
