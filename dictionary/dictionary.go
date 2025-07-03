@@ -49,6 +49,8 @@ func (d Dictionary) Update(word, definition string) error {
 		return ErrDoesNotExist
 	case nil:
 		d[word] = definition
+	default:
+		return err
 	}
 
 	return nil
@@ -61,6 +63,8 @@ func (d Dictionary) Delete(word string) error {
 		return ErrDoesNotExist
 	case err == nil:
 		delete(d, word)
+	default:
+		return err
 	}
 
 	return nil
